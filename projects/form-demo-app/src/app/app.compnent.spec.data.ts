@@ -15,6 +15,124 @@ export const sampleData = [
         }
     },
     {
+        "name": "recommented_duration",
+        "label": "Recommended duration",
+        "value": "",
+        "class": "",
+        "type": "subFields",
+        "placeHolder": "",
+        "subfields": [
+            {
+                "name": "number",
+                "label": "",
+                "value": "",
+                "class": "",
+                "type": "text",
+                "placeHolder": "Number",
+                "position": "floating",
+                "errorMessage": {
+                    "required": "Enter duration in numbers"
+                },
+                "validators": {
+                    "required": true,
+                    "maxLength": 255
+                }
+            },
+            {
+                "name": "duration",
+                "label": "",
+                "value": "",
+                "class": "",
+                "type": "select",
+                "placeHolder": "Weeks",
+                "position": "floating",
+                "errorMessage": {
+                    "required": "Enter duration"
+                },
+                "validators": {
+                    "required": true
+                },
+                "options": [
+                    {'value':'1','label':1},
+                    {'value':'2','label':2},
+                    {'value':'3','label':3}
+                ],
+                "meta": {
+                    "entityType": "duration"
+                },
+                "multiple": false
+            }
+        ],
+        "position": "floating",
+        "errorMessage": {
+            "required": "Enter project title"
+        },
+        "validators": {
+            "required": true
+        }
+    },
+    {
+        "name": "learning_resources",
+        "label": "Project resource (You can add learning resource(s) as a project level)",
+        "value": "",
+        "class": "",
+        "icon": "add_circle",
+        "type": "addResource",
+        "textForLink": "Add learning resource(s)",
+        "placeHolder": "",
+        "position": "floating",
+        "listIcon": "videocam_off",
+        "listLabel": "Video information",
+        "dialogData": {
+            "header": "Add learning resource(s)",
+            "headerCss": "flex flex-row justify-between items-center bg-[#0a4f9d] h-10",
+            "resource": [
+                [
+                    {
+                        "name": "nameOfResource",
+                        "label": "Name of the resource",
+                        "value": "",
+                        "class": "",
+                        "type": "text",
+                        "placeHolder": "Name",
+                        "position": "floating",
+                        "errorMessage": {
+                            "required": "Enter recommended for"
+                        },
+                        "validators": {
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "linkToResource",
+                        "label": "Link to the resource",
+                        "value": "",
+                        "class": "",
+                        "type": "text",
+                        "placeHolder": "Link",
+                        "position": "floating",
+                        "errorMessage": {
+                            "required": "Enter recommended for"
+                        },
+                        "validators": {
+                            "required": true
+                        }
+                    }
+                ]
+            ],
+            "confirmButton": "Save",
+            "cancelButton": "Cancel",
+            "addButton": "Add learning resource(s)"
+        },
+        "errorMessage": {
+            "required": "Enter project title"
+        },
+        "validators": {
+            "required": true,
+            "maxLength": 255
+        }
+    },
+    {
         "name": "description",
         "label": "Description",
         "value":"",

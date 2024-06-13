@@ -2,3 +2,32 @@
     width: 50%;
     height: 50%;
 }
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem;
+    background-color:  #0a4f9d;
+    color: white;
+}
+.dialog-container {
+    width: 500px;
+    height: auto;
+}
+.footer {
+    display: flex;
+    justify-content: end;
+    padding: 1rem;
+}
+.cancel-btn {
+    margin-right: 1rem;
+}
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+.button-container {
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}

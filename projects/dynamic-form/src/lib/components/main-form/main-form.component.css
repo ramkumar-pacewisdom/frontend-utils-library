@@ -28,10 +28,31 @@ mat-label{
 .flex-class{
     display: flex;
     gap: 2px;
+    align-items: center;
 }
 
 .flex-column-class{
     display: flex;
     flex-direction: column;
     gap: 2px;
+}
+.resource-button {
+    display: flex;
+    align-items: center;
+    color:  #0a4f9d;
+    padding: 1.5rem 0;
+}
+.resource-items-container {
+    display: flex;
+    align-items: center;
+    background: lightgray;
+    justify-content: space-between;
+    padding: 0 1rem;
+    border-radius: 5px;
+    margin-bottom: .5rem;
+    min-height: 2.5rem;
+}
+.resouce-inner-section {
+    display: flex;
+    align-items: center;
 }
