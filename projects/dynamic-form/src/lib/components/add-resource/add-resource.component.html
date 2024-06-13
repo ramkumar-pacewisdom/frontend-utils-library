@@ -15,13 +15,27 @@
             [placeholder]="control?.placeHolder"
             [type]="control?.type"
             [formControlName]="control?.name"
+            [maxlength]="control?.validators.maxLength"
             [required]="control?.validators?.required"
+            [pattern]="control?.validators?.pattern"
           />
         </mat-form-field>
+        <mat-error  *ngIf="resourceGroup.get(control.name)?.touched && resourceGroup.get(control.name)?.invalid">
+          <div class="error-message" *ngIf="control?.errorMessage[((resourceGroup.get(control.name)?.errors | keyvalue) || [])[0].key ]; else genericErrorMessage ">
+            <mat-icon class="error-icon" matPrefix>error_outline</mat-icon>
+            {{ control?.errorMessage[ ((resourceGroup.get(control.name)?.errors | keyvalue) || [])[0].key ] }}
+          </div>
+          <ng-template #genericErrorMessage>
+            <div class="error-message">
+              <mat-icon class="error-icon" matPrefix>error_outline</mat-icon>
+              Enter {{ control?.label }}
+            </div>
+          </ng-template>
+        </mat-error>
       </div>
     </div>
-    <div (click)="onClickAddResource()" class="button-container">
-        <button [disabled]="myGroup.invalid" mat-raised-button>
+    <div  class="button-container">
+        <button (click)="onClickAddResource()" [disabled]="myGroup.invalid" mat-raised-button>
           <mat-icon class="cursor-pointer">add_circle</mat-icon>
           <p> {{dialogData.control?.addButton}}</p>
         </button>
