@@ -153,7 +153,7 @@
         <div  *ngFor="let resource of this.resources;let i = index" class="resource-items-container">
           <section class="resouce-inner-section">
             <mat-icon>{{control.listIcon}}</mat-icon>&nbsp;
-            <p>{{resource.nameOfResource}}</p>
+            <p>{{resource.name}}</p>
           </section>
           <mat-icon (click)="deleteResource(i,control?.name)" class="cursor-pointer">close</mat-icon>
         </div>
