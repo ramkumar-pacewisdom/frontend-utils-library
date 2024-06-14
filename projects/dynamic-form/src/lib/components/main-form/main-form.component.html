@@ -123,10 +123,16 @@
       ></textarea>
     </mat-form-field>
 
+    <div *ngIf="control?.type == 'subFields'" >
+      <div>
+        <dynamic-form [formJson]="control.subfields" classFlex="flex-class" #subform (change)="addFields(control?.name, $event)" ></dynamic-form>
+      </div>
+    </div>
+    
     <!-- <mat-form-field appearance="outline" *ngIf="control?.type == 'subFields'" floatLabel="always" hidden>
       <mat-label *ngIf="control.label">{{ control?.label }}</mat-label> -->
       <!-- <div> -->
-        <dynamic-form [formJson]="control.subfields" classFlex="flex-class" #subform (change)="addFields(control?.name, $event)" ></dynamic-form>
+        <!-- <dynamic-form [formJson]="control.subfields" classFlex="flex-class" #subform (change)="addFields(control?.name, $event)" ></dynamic-form> -->
       <!-- </div> -->
       <!-- <textarea
         matInput
@@ -147,7 +153,7 @@
         <div  *ngFor="let resource of this.resources;let i = index" class="resource-items-container">
           <section class="resouce-inner-section">
             <mat-icon>{{control.listIcon}}</mat-icon>&nbsp;
-            <p>{{control.listLabel}}</p>
+            <p>{{resource.nameOfResource}}</p>
           </section>
           <mat-icon (click)="deleteResource(i,control?.name)" class="cursor-pointer">close</mat-icon>
         </div>

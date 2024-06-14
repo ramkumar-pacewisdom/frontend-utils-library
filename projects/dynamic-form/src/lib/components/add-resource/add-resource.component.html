@@ -8,20 +8,34 @@
   <main formArrayName="resources" class="flex-grow overflow-auto p-4">
     <div *ngFor="let resourceGroup of resources.controls; let i = index" [formGroupName]="i" class="form-container">
       <div *ngFor="let control of dialogData.control.resource[i]" class="w-[45%]">
-        <mat-form-field floatLabel="always" class="w-full">
+        <mat-form-field floatLabel="always" class="w-full" appearance="outline">
           <mat-label *ngIf="control.label">{{ control?.label }}</mat-label>
           <input
             matInput
             [placeholder]="control?.placeHolder"
             [type]="control?.type"
             [formControlName]="control?.name"
+            [maxlength]="control?.validators.maxLength"
             [required]="control?.validators?.required"
+            [pattern]="control?.validators?.pattern"
           />
         </mat-form-field>
+        <mat-error  *ngIf="resourceGroup.get(control.name)?.touched && resourceGroup.get(control.name)?.invalid">
+          <div class="error-message" *ngIf="control?.errorMessage[((resourceGroup.get(control.name)?.errors | keyvalue) || [])[0].key ]; else genericErrorMessage ">
+            <mat-icon class="error-icon" matPrefix>error_outline</mat-icon>
+            {{ control?.errorMessage[ ((resourceGroup.get(control.name)?.errors | keyvalue) || [])[0].key ] }}
+          </div>
+          <ng-template #genericErrorMessage>
+            <div class="error-message">
+              <mat-icon class="error-icon" matPrefix>error_outline</mat-icon>
+              Enter {{ control?.label }}
+            </div>
+          </ng-template>
+        </mat-error>
       </div>
     </div>
-    <div (click)="onClickAddResource()" class="button-container">
-        <button [disabled]="myGroup.invalid" mat-raised-button>
+    <div  class="button-container">
+        <button (click)="onClickAddResource()" [disabled]="myGroup.invalid" mat-raised-button>
           <mat-icon class="cursor-pointer">add_circle</mat-icon>
           <p> {{dialogData.control?.addButton}}</p>
         </button>

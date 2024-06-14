@@ -193,7 +193,7 @@ constructor(private fb: FormBuilder,public dialog: MatDialog) {}
   }
   addFields(controlName: any,value:any) {
     this.myForm.patchValue({
-      [controlName]:this.resources?.myForm.value
+      [controlName]:this.subform?.myForm?.value
     });
   }
 
