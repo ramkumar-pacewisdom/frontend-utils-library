@@ -1,4 +1,4 @@
-<form [formGroup]="myForm" [class]="classFlex">
+<form [formGroup]="myForm" [class]="classFlex" (focusout)="handleFocusOut()">
   <div *ngFor="let control of formJson" style="width: 100%;">
     <mat-form-field appearance="outline"
       *ngIf="control?.type === 'text' || control?.type === 'password'"
