@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component,EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatDatepicker } from '@angular/material/datepicker';
@@ -66,6 +66,7 @@ export class MainFormComponent implements OnInit {
   myForm: FormGroup = this.fb.group({});
   resources:any;
   @ViewChild('subform') subform: MainFormComponent | undefined
+  @Output() change = new EventEmitter<any>();
 
   public showSpinners = true;
   public showSeconds = false;
@@ -204,4 +205,8 @@ constructor(private fb: FormBuilder,public dialog: MatDialog) {}
     });
   }
 
+
+  handleFocusOut() {
+    this.change.emit(this.formJson);
+  }
 }
