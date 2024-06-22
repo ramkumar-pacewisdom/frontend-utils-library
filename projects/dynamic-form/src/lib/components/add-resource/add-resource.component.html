@@ -18,6 +18,7 @@
             [maxlength]="control?.validators.maxLength"
             [required]="control?.validators?.required"
             [pattern]="control?.validators?.pattern"
+            [value]="control?.value"
           />
         </mat-form-field>
         <mat-error  *ngIf="resourceGroup.get(control.name)?.touched && resourceGroup.get(control.name)?.invalid">

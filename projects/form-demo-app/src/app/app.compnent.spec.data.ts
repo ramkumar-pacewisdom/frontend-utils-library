@@ -1,17 +1,78 @@
 export const sampleData = [
     {
         "name": "title",
-        "label": "Enter your name",
+        "label": "Project title",
         "value": "",
+        "class": "",
         "type": "text",
-        "placeHolder": "Ex. John",
+        "placeHolder": "Enter project title",
+        "position": "floating",
         "errorMessage": {
-            "required": "Enter your name",
-            "minlength":"Min length should be 5",
+            "required": "Enter project title"
         },
         "validators": {
             "required": true,
-            "minLength": 10
+            "maxLength": 255
+        }
+    },
+    {
+        "name": "categories",
+        "label": "Category",
+        "value": "",
+        "class": "",
+        "type": "select",
+        "placeHolder": "Add project category",
+        "position": "floating",
+        "errorMessage": {
+            "required": "Add project category"
+        },
+        "validators": {
+            "required": true
+        },
+        "options": [
+            {
+                "label": "Community",
+                "value": "community"
+            },
+            {
+                "label": "Education leader",
+                "value": "education_leader"
+            },
+            {
+                "label": "Infrastructure",
+                "value": "infrastructure"
+            },
+            {
+                "label": "School process",
+                "value": "school_process"
+            },
+            {
+                "label": "Student",
+                "value": "student"
+            },
+            {
+                "label": "Teacher",
+                "value": "teacher"
+            }
+        ],
+        "meta": {
+            "entityType": "categories"
+        },
+        "multiple": false
+    },
+    {
+        "name": "objective",
+        "label": "Objective",
+        "value": "",
+        "class": "",
+        "type": "textarea",
+        "placeHolder": "Summarize the goal of the project",
+        "position": "floating",
+        "errorMessage": {
+            "required": "Summarize the goal of the project"
+        },
+        "validators": {
+            "required": true
         }
     },
     {
@@ -24,18 +85,20 @@ export const sampleData = [
         "subfields": [
             {
                 "name": "number",
-                "label": "",
+                "label": "Recommended duration",
                 "value": "",
                 "class": "",
                 "type": "text",
                 "placeHolder": "Number",
                 "position": "floating",
                 "errorMessage": {
-                    "required": "Enter duration in numbers"
+                    "required": "Enter duration ",
+                    "pattern": "Enter duration in numbers"
                 },
                 "validators": {
                     "required": true,
-                    "maxLength": 255
+                    "maxLength": 2,
+                    "pattern": "^[0-9]+$"
                 }
             },
             {
@@ -53,9 +116,18 @@ export const sampleData = [
                     "required": true
                 },
                 "options": [
-                    {'value':'1','label':1},
-                    {'value':'2','label':2},
-                    {'value':'3','label':3}
+                    {
+                        "label": "Days",
+                        "value": "days"
+                    },
+                    {
+                        "label": "Months",
+                        "value": "months"
+                    },
+                    {
+                        "label": "Weeks",
+                        "value": "weeks"
+                    }
                 ],
                 "meta": {
                     "entityType": "duration"
@@ -68,8 +140,90 @@ export const sampleData = [
             "required": "Enter project title"
         },
         "validators": {
-            "required": true
+            "required": false
         }
+    },
+    {
+        "name": "keywords",
+        "label": "Add keywords",
+        "value": "",
+        "class": "",
+        "type": "text",
+        "placeHolder": "Add a tag",
+        "position": "floating",
+        "errorMessage": {
+            "required": "Add a tag"
+        },
+        "validators": {
+            "required": true,
+            "maxLength": 255
+        }
+    },
+    {
+        "name": "recommeneded_for",
+        "label": "Recommended for",
+        "value": "",
+        "class": "",
+        "type": "select",
+        "placeHolder": "Select role",
+        "position": "floating",
+        "errorMessage": {
+            "required": "Select role"
+        },
+        "validators": {
+            "required": true
+        },
+        "options": [
+            {
+                "label": "Education leader",
+                "value": "education_leader"
+            },
+            {
+                "label": "HM",
+                "value": "hm"
+            },
+            {
+                "label": "HT",
+                "value": "ht"
+            },
+            {
+                "label": "Teacher",
+                "value": "teacher"
+            }
+        ],
+        "meta": {
+            "entityType": "recommeneded_for"
+        },
+        "multiple": false
+    },
+    {
+        "name": "languages",
+        "label": "Language",
+        "value": "",
+        "class": "",
+        "type": "select",
+        "placeHolder": "Select language",
+        "position": "floating",
+        "errorMessage": {
+            "required": "Select language"
+        },
+        "validators": {
+            "required": true
+        },
+        "options": [
+            {
+                "label": "English",
+                "value": "en"
+            },
+            {
+                "label": "Hindi",
+                "value": "hi"
+            }
+        ],
+        "meta": {
+            "entityType": "languages"
+        },
+        "multiple": false
     },
     {
         "name": "learning_resources",
@@ -85,11 +239,11 @@ export const sampleData = [
         "listLabel": "Video information",
         "dialogData": {
             "header": "Add learning resource(s)",
-            "headerCss": "flex flex-row justify-between items-center bg-[#0a4f9d] h-10",
+            "headerCss": "flex flex-row justify-between items-center bg-[#0A4F9D] h-10",
             "resource": [
                 [
                     {
-                        "name": "nameOfResource",
+                        "name": "name",
                         "label": "Name of the resource",
                         "value": "",
                         "class": "",
@@ -97,14 +251,15 @@ export const sampleData = [
                         "placeHolder": "Name",
                         "position": "floating",
                         "errorMessage": {
-                            "required": "Enter recommended for"
+                            "required": "Enter name of the resource",
                         },
                         "validators": {
-                            "required": true
+                            "required": true,
+                            "maxLength":255
                         }
                     },
                     {
-                        "name": "linkToResource",
+                        "name": "url",
                         "label": "Link to the resource",
                         "value": "",
                         "class": "",
@@ -112,10 +267,12 @@ export const sampleData = [
                         "placeHolder": "Link",
                         "position": "floating",
                         "errorMessage": {
-                            "required": "Enter recommended for"
+                            "required": "Enter link to the resource",
+                            "pattern":"Please add link to resource"
                         },
                         "validators": {
-                            "required": true
+                            "required": true,
+                            "pattern":"^https[:a-zA-Z0-9-?./\=]+$"
                         }
                     }
                 ]
@@ -133,222 +290,48 @@ export const sampleData = [
         }
     },
     {
-        "name": "description",
-        "label": "Description",
-        "value":"",
-        "type": "textarea",
-        "placeHolder": "Tell the community something about yourself",
-        "errorMessage": {
-            "required": "Enter description"
-        },
-        "validators": {
-            "required": false,
-            "maxLength": 255
-        }
-    },
-    {
-        "name": "password",
-        "label": "Enter the password",
-        "value":"",
-        "type": "password",
-        "placeHolder": "Type your password here",
-        "errorMessage": {
-            "required": "Password is required",
-        },
-        "validators": {
-            "required": false,
-        }
-    },
-    {
-        "name": "location",
-        "label": "Select your location",
-        "value":"",
+        "name": "licenses",
+        "label": "License",
+        "value": "",
+        "class": "",
         "type": "select",
+        "placeHolder": "Select license",
+        "position": "floating",
         "errorMessage": {
-            "required": "Please select your location"
-        },
-        "validators": {
-            "required": false
-        },
-        "options": [
-            {
-                "label": "Andhra Pradesh",
-                "value": "ap"
-            },
-            {
-                "label": "Arunachal Pradesh",
-                "value": "ar"
-            },
-            {
-                "label": "Assam",
-                "value": "as"
-            },
-            {
-                "label": "Bihar",
-                "value": "br"
-            },
-            {
-                "label": "Chhattisgarh",
-                "value": "cg"
-            },
-            {
-                "label": "Goa",
-                "value": "ga"
-            },
-        ],
-        "meta": {
-            "entityType": "location",
-            "errorLabel": "Location"
-        },
-        "multiple": false
-    },
-    {
-        "name": "recommended_for",
-        "label": "Recommended for",
-        "value":"",
-        "type": "chip",
-        "disabled": false,
-        "errorMessage": {
-            "required": "Enter recommended for"
-        },
-        "validators": {
-            "required": false
-        },
-        "options": [
-            {
-                "label": "Block education officer",
-                "value": "beo"
-            },
-            {
-                "label": "Cluster officials",
-                "value": "co"
-            },
-            {
-                "label": "District education officer",
-                "value": "deo"
-            },
-            {
-                "label": "Head master",
-                "value": "hm"
-            },
-            {
-                "label": "Teacher",
-                "value": "te"
-            }
-        ],
-        "meta": {
-            "entityType": "recommended_for",
-            "addNewPopupHeader": "Recommended for",
-            "addNewPopupSubHeader": "Who is this session for?",
-            "showSelectAll": true,
-            "showAddOption": true
-        },
-        "multiple": true
-    },
-    {
-        "name": "range_value",
-        "label": "Select difficulty level",
-        "value":"0",
-        "type": "range",
-        "min": "0",
-        "max": "50",
-        "step": "1",
-        "placeHolder": "Select a range value",
-        "errorMessage": {
-            "required": "Select a value"
-        },
-        "validators": {
-            "required": false
-        },
-        "showThumbLabel":true
-    },
-    {
-        "name": "rating",
-        "label": "How do you rate this",
-        "value":"",
-        "type": "rating",
-        "errorMessage": {
-            "required": "Select a rating value"
-        },
-        "validators": {
-            "required": false
-        },
-        "noOfstars":5
-    },
-    {
-        "name": "categories",
-        "label": "Checkbox Input",
-        "value":"",
-        "type": "checkbox",
-        "errorMessage": {
-            "required": "Select a category"
-        },
-        "validators": {
-            "required": false
-        },
-        "options": [
-            {
-                "label": "Block education officer",
-                "value": "beo"
-            },
-            {
-                "label": "Cluster officials",
-                "value": "co"
-            },
-            {
-                "label": "District education officer",
-                "value": "deo"
-            },
-            {
-                "label": "Head master",
-                "value": "hm"
-            },
-            {
-                "label": "Teacher",
-                "value": "te"
-            },
-            {
-                "label": "District education officer",
-                "value": "deo"
-            }
-        ]
-    },
-    {
-        "name": "gender",
-        "label": "Radio Input",
-        "value":"",
-        "type": "radio",
-        "errorMessage": {
-            "required": "Select a value"
+            "required": "Select license"
         },
         "validators": {
             "required": true
         },
         "options": [
             {
-                "label": "Male",
-                "value": "m"
+                "label": "CC BY 4.0",
+                "value": "cc_by_4.0"
             },
             {
-                "label": "female",
-                "value": "f"
+                "label": "CC BY NC",
+                "value": "cc_by_nc"
             },
             {
-                "label": "not to disclose",
-                "value": "n"
+                "label": "CC BY NC ND",
+                "value": "cc_by_nc_nd"
+            },
+            {
+                "label": "CC BY NC SA",
+                "value": "cc_by_nc_sa"
+            },
+            {
+                "label": "CC BY ND",
+                "value": "cc_by_nd"
+            },
+            {
+                "label": "CC BY SA",
+                "value": "cc_by_sa"
             }
-        ]
-    },
-    {
-        "name": "accept",
-        "label": "Terms and conditions",
-        "value": false,
-        "type": "toggle",
-        "errorMessage": {
-            "required": "You need to accept"
+        ],
+        "meta": {
+            "entityType": "licenses"
         },
-        "validators": {
-            "required": false
-        }
+        "multiple": false
     }
 ]
