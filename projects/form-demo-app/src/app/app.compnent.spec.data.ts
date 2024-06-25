@@ -86,7 +86,7 @@ export const sampleData = [
             {
                 "name": "number",
                 "label": "Recommended duration",
-                "value": "",
+                "value": "10",
                 "class": "",
                 "type": "text",
                 "placeHolder": "Number",
@@ -104,7 +104,7 @@ export const sampleData = [
             {
                 "name": "duration",
                 "label": "",
-                "value": "",
+                "value": "days",
                 "class": "",
                 "type": "select",
                 "placeHolder": "Weeks",

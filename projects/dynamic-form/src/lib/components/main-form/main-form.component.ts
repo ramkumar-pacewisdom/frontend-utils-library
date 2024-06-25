@@ -207,6 +207,10 @@ constructor(private fb: FormBuilder,public dialog: MatDialog) {}
 
 
   handleFocusOut() {
-    this.change.emit(this.formJson);
+    if(this.subform?.myForm) {
+      this.myForm.value.recommented_duration = this.subform?.myForm.value;
+      // instead of recommended duration, in subfields meta, parent control name need to be added.
+    }
+    this.change.emit(this.myForm.value);
   }
 }

@@ -13,6 +13,7 @@
         [maxlength]="control?.validators.maxLength"
         [required]="control?.validators?.required"
         [value]="control?.value"
+        [(ngModel)]="control.value"
       />
       <mat-icon
         matSuffix
@@ -33,6 +34,7 @@
         [maxlength]="control?.validators?.maxLength"
         [required]="control?.validators?.required"
         [value]="control?.value"
+        [(ngModel)]="control.value"
       >
       </textarea>
     </mat-form-field>
