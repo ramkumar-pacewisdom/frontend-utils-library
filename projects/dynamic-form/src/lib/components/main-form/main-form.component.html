@@ -47,6 +47,7 @@
         [formControlName]="control?.name"
         [required]="control?.validators?.required"
         [compareWith]="compareWith"
+        [multiple]="control.isMultiSelect"
       >
         <mat-option *ngFor="let option of control?.options" [value]="option">
           {{ option.label }}

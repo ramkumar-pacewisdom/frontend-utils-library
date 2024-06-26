@@ -21,6 +21,7 @@ export const sampleData = [
         "value": "",
         "class": "",
         "type": "select",
+        "isMultiSelect":"false",
         "placeHolder": "Add project category",
         "position": "floating",
         "errorMessage": {
@@ -107,6 +108,7 @@ export const sampleData = [
                 "value": "days",
                 "class": "",
                 "type": "select",
+                "isMultiSelect":"false",
                 "placeHolder": "Weeks",
                 "position": "floating",
                 "errorMessage": {
@@ -166,6 +168,7 @@ export const sampleData = [
         "class": "",
         "type": "select",
         "placeHolder": "Select role",
+        "isMultiSelect":"false",
         "position": "floating",
         "errorMessage": {
             "required": "Select role"
@@ -203,6 +206,7 @@ export const sampleData = [
         "class": "",
         "type": "select",
         "placeHolder": "Select language",
+        "isMultiSelect":"true",
         "position": "floating",
         "errorMessage": {
             "required": "Select language"
@@ -295,6 +299,7 @@ export const sampleData = [
         "value": "",
         "class": "",
         "type": "select",
+        "isMultiSelect":"false",
         "placeHolder": "Select license",
         "position": "floating",
         "errorMessage": {
