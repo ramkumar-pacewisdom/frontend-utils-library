@@ -21,17 +21,19 @@
             [value]="control?.value"
           />
         </mat-form-field>
-        <mat-error  *ngIf="resourceGroup.get(control.name)?.touched && resourceGroup.get(control.name)?.invalid">
-          <div class="error-message" *ngIf="control?.errorMessage[((resourceGroup.get(control.name)?.errors | keyvalue) || [])[0].key ]; else genericErrorMessage ">
-            <mat-icon class="error-icon" matPrefix>error_outline</mat-icon>
-            {{ control?.errorMessage[ ((resourceGroup.get(control.name)?.errors | keyvalue) || [])[0].key ] }}
-          </div>
-          <ng-template #genericErrorMessage>
-            <div class="error-message">
+        <mat-error class="error-container" *ngIf="control?.errorMessage" >
+          <div *ngIf="resourceGroup.get(control.name)?.touched && resourceGroup.get(control.name)?.invalid">
+            <div class="error-message" *ngIf="control?.errorMessage[((resourceGroup.get(control.name)?.errors | keyvalue) || [])[0].key ]; else genericErrorMessage ">
               <mat-icon class="error-icon" matPrefix>error_outline</mat-icon>
-              Enter {{ control?.label }}
+              {{ control?.errorMessage[ ((resourceGroup.get(control.name)?.errors | keyvalue) || [])[0].key ] }}
             </div>
-          </ng-template>
+            <ng-template #genericErrorMessage>
+              <div class="error-message">
+                <mat-icon class="error-icon" matPrefix>error_outline</mat-icon>
+                Enter {{ control?.label }}
+              </div>
+            </ng-template>
+          </div>
         </mat-error>
       </div>
     </div>
