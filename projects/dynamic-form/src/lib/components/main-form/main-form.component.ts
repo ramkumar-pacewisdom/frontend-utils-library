@@ -64,7 +64,7 @@ export class MainFormComponent implements OnInit {
   @Input() formJson: any;
   @Input() classFlex: any ;
   myForm: FormGroup = this.fb.group({});
-  resources:any = []
+  resources:any = [];
   @ViewChild('subform') subform: MainFormComponent | undefined
   @Output() change = new EventEmitter<any>();
 
