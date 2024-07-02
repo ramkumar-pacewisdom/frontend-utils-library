@@ -190,7 +190,7 @@ constructor(private fb: FormBuilder,public dialog: MatDialog) {}
     const componentInstance = dialog.componentInstance;
     componentInstance.saveLearningResource.subscribe((result: any) => {
       if (result) {
-        this.resources =this.resources.concat(result);
+        this.resources = this.resources ? this.resources.concat(result) : result;
           this.myForm.patchValue({
             [control.name]:this.resources
           });
