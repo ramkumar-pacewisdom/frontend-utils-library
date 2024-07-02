@@ -64,7 +64,7 @@ export class MainFormComponent implements OnInit {
   @Input() formJson: any;
   @Input() classFlex: any ;
   myForm: FormGroup = this.fb.group({});
-  resources:any;
+  resources:any = [];
   @ViewChild('subform') subform: MainFormComponent | undefined
   @Output() change = new EventEmitter<any>();
 
@@ -92,6 +92,11 @@ constructor(private fb: FormBuilder,public dialog: MatDialog) {}
 
   ngOnInit() {
     this.createForm(this.formJson);
+    this.formJson.forEach((element:any) => {
+      if(element.type == "addResource"){
+        this.resources = element.value
+      }
+    });
   }
 
   createForm(controls: JsonFormControls[]) {
@@ -185,7 +190,7 @@ constructor(private fb: FormBuilder,public dialog: MatDialog) {}
     const componentInstance = dialog.componentInstance;
     componentInstance.saveLearningResource.subscribe((result: any) => {
       if (result) {
-        this.resources = result;
+        this.resources = this.resources ? this.resources.concat(result) : result;
           this.myForm.patchValue({
             [control.name]:this.resources
           });
