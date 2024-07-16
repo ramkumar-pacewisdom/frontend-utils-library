@@ -182,6 +182,7 @@ constructor(private fb: FormBuilder,public dialog: MatDialog) {}
 
   onClickAddResource(control:any){
     let dialog = this.dialog.open(AddResourceComponent, {
+      disableClose: true,
       data: {
         control:control.dialogData
       }
