@@ -195,6 +195,7 @@ constructor(private fb: FormBuilder,public dialog: MatDialog) {}
           this.myForm.patchValue({
             [control.name]:this.resources
           });
+          this.handleFocusOut()
       }
     });
   }
