@@ -210,6 +210,7 @@ constructor(private fb: FormBuilder,public dialog: MatDialog) {}
      this.myForm.patchValue({
       [name]:this.resources
     });
+    this.handleFocusOut()
   }
 
 
