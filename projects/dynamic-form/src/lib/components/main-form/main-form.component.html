@@ -148,14 +148,14 @@
       ></textarea>
     </mat-form-field> -->
 
-    <mat-form-field appearance="outline" *ngIf="control?.type == 'addResource'" floatLabel="always" appearance="fill" class="no-bottom-line">
+    <mat-form-field *ngIf="control?.type == 'addResource'" floatLabel="always" class="no-bottom-line">
       <mat-label *ngIf="control.label">{{ control?.label }}</mat-label>
       <div class="resource-button" (click)="onClickAddResource(control)">
         <mat-icon>{{control.icon}}</mat-icon>&nbsp;
         <p>{{control?.textForLink}}</p>
       </div>
       <div class="flex flex-col gap-4">
-        <div  *ngFor="let resource of this.resources;let i = index" class="resource-items-container">
+        <div  *ngFor="let resource of resources;let i = index" class="resource-items-container">
           <section class="resouce-inner-section">
             <mat-icon>{{control.listIcon}}</mat-icon>&nbsp;
             <p>{{resource.name}}</p>
