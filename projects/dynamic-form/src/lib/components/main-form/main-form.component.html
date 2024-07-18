@@ -150,7 +150,7 @@
 
     <mat-form-field *ngIf="control?.type == 'addResource'" floatLabel="always" class="no-bottom-line">
       <mat-label *ngIf="control.label">{{ control?.label }}</mat-label>
-      <div class="resource-button" (click)="onClickAddResource(control)">
+      <div class="resource-button cursor-pointer" (click)="onClickAddResource(control)">
         <mat-icon>{{control.icon}}</mat-icon>&nbsp;
         <p>{{control?.textForLink}}</p>
       </div>
