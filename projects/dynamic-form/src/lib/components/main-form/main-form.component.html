@@ -24,6 +24,31 @@
         {{ control?.type === "password" ? "visibility_off" : "visibility" }}
       </mat-icon>
     </mat-form-field>
+    <mat-form-field appearance="outline"
+      *ngIf="control?.type === 'number'"
+      floatLabel="always"
+    >
+      <mat-label *ngIf="control.label">{{ control?.label }}</mat-label>
+      <input
+        matInput
+        [placeholder]="control?.placeHolder"
+        [type]="control?.type"
+        [formControlName]="control?.name"
+        [min]="control?.validators.min"
+        [max]="control?.validators.m"
+        [required]="control?.validators?.required"
+        [value]="control?.value"
+        [(ngModel)]="control.value"
+      />
+      <mat-icon
+        matSuffix
+        *ngIf="control?.type === 'password' || control?.showPasswordIcon"
+        (click)="togglePasswordVisibility(control)"
+        style="cursor: pointer"
+      >
+        {{ control?.type === "password" ? "visibility_off" : "visibility" }}
+      </mat-icon>
+    </mat-form-field>
 
     <mat-form-field appearance="outline" *ngIf="control?.type === 'textarea'" floatLabel="always" >
       <mat-label *ngIf="control.label">{{ control?.label }}</mat-label>
@@ -42,19 +67,18 @@
     <mat-form-field appearance="outline" *ngIf="control?.type === 'select'" floatLabel="always">
       <mat-label *ngIf="control.label">{{ control?.label }}</mat-label>
       <mat-select
-        [value]="control?.value"
         [placeholder]="control?.placeHolder"
         [formControlName]="control?.name"
         [required]="control?.validators?.required"
         [compareWith]="compareWith"
         [multiple]="control.isMultiSelect"
       >
-        <mat-option *ngFor="let option of control?.options" [value]="option">
+        <mat-option *ngFor="let option of control?.options" [value]="option" [selected]="control.value == option.value">
           {{ option.label }}
         </mat-option>
       </mat-select>
     </mat-form-field>
-
+    <p>control value{{control?.value}}</p>
     <mat-form-field appearance="outline" *ngIf="control?.type === 'chip'" floatLabel="always">
       <mat-label *ngIf="control.label">{{ control?.label }}</mat-label>
       <lib-chip-input

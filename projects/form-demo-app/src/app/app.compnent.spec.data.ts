@@ -2,13 +2,14 @@ export const sampleData = [
     {
         "name": "title",
         "label": "Project title",
-        "value": "",
+        "value": "asfs",
         "class": "",
         "type": "text",
         "placeHolder": "Enter project title",
         "position": "floating",
         "errorMessage": {
-            "required": "Enter project title"
+            "required": "Enter project title",
+            "maxLength":"Length exceeded"
         },
         "validators": {
             "required": true,
@@ -16,9 +17,26 @@ export const sampleData = [
         }
     },
     {
+        "name": "number",
+        "label": "Project title",
+        "value": '',
+        "class": "",
+        "type": "number",
+        "placeHolder": "Enter number",
+        "position": "floating",
+        "errorMessage": {
+            "required": "Enter number"
+        },
+        "validators": {
+            "required": true,
+            "min":0,
+            "max":255
+        }
+    },
+    {
         "name": "categories",
         "label": "Category",
-        "value": "",
+        "value":"community",
         "class": "",
         "type": "select",
         "isMultiSelect":"false",
@@ -296,7 +314,7 @@ export const sampleData = [
     {
         "name": "licenses",
         "label": "License",
-        "value": "",
+        "value": "cc_by_nc",
         "class": "",
         "type": "select",
         "isMultiSelect":"false",
@@ -311,7 +329,7 @@ export const sampleData = [
         "options": [
             {
                 "label": "CC BY 4.0",
-                "value": "cc_by_4.0"
+                "value": "cc"
             },
             {
                 "label": "CC BY NC",
