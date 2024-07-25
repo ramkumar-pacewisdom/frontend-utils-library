@@ -50,3 +50,8 @@
     display: flex;
     height: 2.000rem;
 }
+
+.main-container{
+    max-height: 18.75rem;
+    overflow-y: scroll;
+}
