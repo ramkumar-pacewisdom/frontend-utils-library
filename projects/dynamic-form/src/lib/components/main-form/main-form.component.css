@@ -65,6 +65,10 @@ mat-label{
     height: 2.000rem;
 }
      
+.disabled-with-pointer-events{
+    pointer-events: none;
+    opacity: 1;
+}
 
 
 
