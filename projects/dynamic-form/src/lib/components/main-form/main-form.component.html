@@ -1,4 +1,4 @@
-<form [formGroup]="myForm" [class]="classFlex" (focusout)="handleFocusOut()">
+<form [formGroup]="myForm" [class]="classFlex" (focusout)="handleFocusOut()" [ngClass]="{'disabled-with-pointer-events': viewOnly}">
   <div *ngFor="let control of formJson" style="width: 100%;">
     <mat-form-field appearance="outline"
       *ngIf="control?.type === 'text' || control?.type === 'password'"
@@ -154,7 +154,7 @@
 
     <div *ngIf="control?.type == 'subFields'" >
       <div>
-        <dynamic-form [formJson]="control.subfields" classFlex="flex-class" #subform (change)="addFields(control?.name, $event)" ></dynamic-form>
+        <dynamic-form [formJson]="control.subfields" [viewOnly]="viewOnly" classFlex="flex-class" #subform (change)="addFields(control?.name, $event)" ></dynamic-form>
       </div>
     </div>
 

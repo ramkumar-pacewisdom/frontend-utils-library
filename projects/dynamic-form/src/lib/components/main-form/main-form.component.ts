@@ -62,6 +62,7 @@ export interface DynamicFormData {
 })
 export class MainFormComponent implements OnInit {
   @Input() formJson: any;
+  @Input() viewOnly: boolean = false;
   @Input() classFlex: any ;
   myForm: FormGroup = this.fb.group({});
   resources:any = [];
