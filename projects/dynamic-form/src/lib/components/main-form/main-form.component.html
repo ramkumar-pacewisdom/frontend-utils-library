@@ -14,6 +14,7 @@
         [required]="control?.validators?.required"
         [value]="control?.value"
         [(ngModel)]="control.value"
+        [readonly]="viewOnly"
       />
       <mat-icon
         matSuffix
@@ -39,6 +40,7 @@
         [required]="control?.validators?.required"
         [value]="control?.value"
         [(ngModel)]="control.value"
+        [readonly]="viewOnly"
       />
       <mat-icon
         matSuffix
@@ -60,18 +62,20 @@
         [required]="control?.validators?.required"
         [value]="control?.value"
         [(ngModel)]="control.value"
+        [readonly]="viewOnly"
       >
       </textarea>
     </mat-form-field>
 
     <mat-form-field appearance="outline" *ngIf="control?.type === 'select'" floatLabel="always">
-      <mat-label *ngIf="control.label">{{ control?.label }}</mat-label>
+      <mat-label [ngClass]="{'disabled-with-pointer-events': viewOnly}" *ngIf="control.label">{{ control?.label }}</mat-label>
       <mat-select
         [placeholder]="control?.placeHolder"
         [formControlName]="control?.name"
         [required]="control?.validators?.required"
         [compareWith]="compareWith"
         [multiple]="control.isMultiSelect"
+        [ngClass]="{'readonly-select': viewOnly}"
       >
         <mat-option *ngFor="let option of control?.options" [value]="option" [selected]="control.value == option.value">
           {{ option.label }}
@@ -90,6 +94,7 @@
         [formControlName]="control?.name"
         hidden
         [required]="control?.validators?.required"
+        [readonly]="viewOnly"
       ></textarea>
     </mat-form-field>
 
@@ -192,6 +197,7 @@
         [formControlName]="control?.name"
         hidden
         [required]="control?.validators?.required"
+        [readonly]="viewOnly"
       ></textarea>
     </mat-form-field>
 
