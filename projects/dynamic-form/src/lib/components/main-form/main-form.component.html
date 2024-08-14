@@ -75,7 +75,6 @@
         [required]="control?.validators?.required"
         [compareWith]="compareWith"
         [multiple]="control.isMultiSelect"
-        [ngClass]="{'readonly-select': viewOnly}"
       >
         <mat-option *ngFor="let option of control?.options" [value]="option" [selected]="control.value == option.value">
           {{ option.label }}
