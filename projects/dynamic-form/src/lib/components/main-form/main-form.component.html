@@ -14,6 +14,7 @@
         [required]="control?.validators?.required"
         [value]="control?.value"
         [(ngModel)]="control.value"
+        [readonly]="viewOnly"
       />
       <mat-icon
         matSuffix
@@ -39,6 +40,7 @@
         [required]="control?.validators?.required"
         [value]="control?.value"
         [(ngModel)]="control.value"
+        [readonly]="viewOnly"
       />
       <mat-icon
         matSuffix
@@ -60,6 +62,7 @@
         [required]="control?.validators?.required"
         [value]="control?.value"
         [(ngModel)]="control.value"
+        [readonly]="viewOnly"
       >
       </textarea>
     </mat-form-field>
@@ -90,6 +93,7 @@
         [formControlName]="control?.name"
         hidden
         [required]="control?.validators?.required"
+        [readonly]="viewOnly"
       ></textarea>
     </mat-form-field>
 
@@ -192,6 +196,7 @@
         [formControlName]="control?.name"
         hidden
         [required]="control?.validators?.required"
+        [readonly]="viewOnly"
       ></textarea>
     </mat-form-field>
 
