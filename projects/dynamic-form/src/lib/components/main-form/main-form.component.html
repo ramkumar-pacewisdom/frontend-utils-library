@@ -68,7 +68,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline" *ngIf="control?.type === 'select'" floatLabel="always">
-      <mat-label [ngClass]="{'disabled-with-pointer-events': viewOnly}" *ngIf="control.label">{{ control?.label }}</mat-label>
+      <mat-label *ngIf="control.label">{{ control?.label }}</mat-label>
       <mat-select
         [placeholder]="control?.placeHolder"
         [formControlName]="control?.name"
