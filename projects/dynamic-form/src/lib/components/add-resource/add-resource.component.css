@@ -28,6 +28,7 @@
     padding: 1rem 2rem;
 }
 .button-container {
+    margin-top:1rem;
     margin-left: 2rem;
     margin-bottom: 2rem;
 }
@@ -35,12 +36,13 @@
 .error-message{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: start;
     font-size: 12px;
     padding: 0.125rem 0;
 }
 
 .error-icon{
+    padding-right: 18px;
     font-size: 16px;
     width: 20px;
     height: auto;
