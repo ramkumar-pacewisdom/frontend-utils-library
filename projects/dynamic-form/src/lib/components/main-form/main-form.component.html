@@ -1,5 +1,5 @@
 <form [formGroup]="myForm" [class]="classFlex" (focusout)="handleFocusOut()" [ngClass]="{'disabled-with-pointer-events': viewOnly}">
-  <div *ngFor="let control of formJson" style="width: 100%;">
+  <div *ngFor="let control of formJson; let i = index"  style="width: 100%; position: relative;">
     <mat-form-field appearance="outline"
       *ngIf="control?.type === 'text' || control?.type === 'password'"
       floatLabel="always"
@@ -199,7 +199,19 @@
         [readonly]="viewOnly"
       ></textarea>
     </mat-form-field>
-
+  
+    <mat-icon 
+      *ngIf="control?.infoMessage"
+      class="info-icon" 
+      matTooltipClass="info-tooltip"
+      matTooltipPosition="above"
+      [matTooltip]="control?.infoMessage"
+      [matTooltipDisabled]="true"
+      #tooltip="matTooltip" 
+      (click)="showTooltip(i)"
+      (mouseleave)="hideTooltip(i)">info
+    </mat-icon>
+  
   <mat-error class="error-container" *ngIf="control?.errorMessage">
     <div  *ngIf="
     myForm.get(control?.name)?.touched &&

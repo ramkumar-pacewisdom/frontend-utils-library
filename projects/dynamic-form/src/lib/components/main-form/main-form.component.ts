@@ -1,8 +1,9 @@
-import { Component,EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component,ElementRef,EventEmitter, HostListener, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTooltip } from '@angular/material/tooltip';
 import { AddResourceComponent } from '../add-resource/add-resource.component';
 
 interface JsonFormValidators {
@@ -68,7 +69,8 @@ export class MainFormComponent implements OnInit {
   resources:any = [];
   @ViewChild('subform') subform: MainFormComponent | undefined
   @Output() change = new EventEmitter<any>();
-
+  // ViewChildren to capture all tooltip instances
+  @ViewChildren(MatTooltip) tooltips!: QueryList<MatTooltip>;
   public showSpinners = true;
   public showSeconds = false;
   public touchUi = false;
@@ -89,7 +91,7 @@ export class MainFormComponent implements OnInit {
   dependedParentDate: any;
   @ViewChild('picker') picker: MatDatepicker<Date> | undefined;
 
-constructor(private fb: FormBuilder,public dialog: MatDialog) {}
+constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: ElementRef) {}
 
   ngOnInit() {
     this.createForm(this.formJson);
@@ -225,4 +227,35 @@ constructor(private fb: FormBuilder,public dialog: MatDialog) {}
     }
     this.change.emit(this.myForm.value);
   }
+
+  showTooltip(index: number) {
+    const tooltipArray = this.tooltips.toArray();
+    tooltipArray.forEach((tooltip, i) => {
+      if (i === index) {
+        tooltip.disabled = false;
+        tooltip.show();
+      } else {
+        tooltip.disabled = true;
+        tooltip.hide();
+      }
+    });
+  }
+
+  hideTooltip(index: number) {
+    const tooltipArray = this.tooltips.toArray();
+    tooltipArray[index]?.hide();
+    tooltipArray[index].disabled = true; 
+  }
+
+  // Listen to document clicks to hide tooltips when clicking outside
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    if (!this.eRef.nativeElement.contains(event.target)) {
+      this.tooltips.forEach(tooltip => {
+        tooltip.hide();
+        tooltip.disabled = true; 
+      });
+    }
+  }
+
 }
