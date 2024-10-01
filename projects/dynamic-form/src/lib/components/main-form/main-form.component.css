@@ -80,11 +80,11 @@ mat-label{
     position: absolute;
     top: 0rem;
     right: -1.5rem;
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 ::ng-deep .info-tooltip .mdc-tooltip__surface {
-    font-size: 12px !important;
+    font-size: 0.75rem !important;
     background-color: #0a4f9d  !important;
 }
 
