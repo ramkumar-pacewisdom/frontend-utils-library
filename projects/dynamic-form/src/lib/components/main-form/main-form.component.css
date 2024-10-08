@@ -81,6 +81,11 @@ mat-label{
     top: 0rem;
     right: -1.5rem;
     font-size: 1.25rem;
+    padding-left: 0.25rem;
+}
+
+.enable-with-pointer-events{
+    pointer-events: auto !important;
 }
 
 ::ng-deep .info-tooltip .mdc-tooltip__surface {
