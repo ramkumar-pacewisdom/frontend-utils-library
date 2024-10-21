@@ -83,6 +83,7 @@ export class ChipInputComponent implements OnInit, ControlValueAccessor {
       data: {
         header: this.chipControl.meta.addNewPopupHeader,
         label: this.chipControl.meta.addNewPopupSubHeader,
+        placeHolder:this.chipControl.meta.placeHolder,
         required: true,
         maxLength: 20,
         buttonText: {

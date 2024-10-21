@@ -22,6 +22,7 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule, MatTooltip } from '@angular/material/tooltip';
 import { AddResourceComponent } from './components/add-resource/add-resource.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { AddResourceComponent } from './components/add-resource/add-resource.com
     MatCheckboxModule,
     MatRadioModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatTooltipModule,
     MatTooltip
   ],
