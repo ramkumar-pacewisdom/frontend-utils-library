@@ -92,8 +92,8 @@
         matInput
         [formControlName]="control?.name"
         hidden
+        class="visibility-hidden"
         [required]="control?.validators?.required"
-        [readonly]="viewOnly"
       ></textarea>
     </mat-form-field>
 
@@ -132,7 +132,7 @@
 
     <mat-form-field appearance="outline" *ngIf="control?.type === 'radio'" floatLabel="always">
       <mat-label *ngIf="control.label">{{ control?.label }}</mat-label>
-      <input matInput [formControlName]="control?.name" hidden />
+      <input matInput [formControlName]="control?.name" hidden class="visibility-hidden" />
       <lib-radio-input
         [radioControl]="control"
         [formControlName]="control?.name"
@@ -149,6 +149,7 @@
       >
       </mat-slide-toggle>
       <textarea
+        class="visibility-hidden"
         matInput
         [formControlName]="control?.name"
         hidden
@@ -198,6 +199,13 @@
         [required]="control?.validators?.required"
         [readonly]="viewOnly"
       ></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width"  appearance="outline" floatLabel="always"  *ngIf="control?.type == 'date'">
+      <mat-label *ngIf="control.label">{{ control?.label }}</mat-label>
+      <input matInput [placeholder]="control?.placeHolder" (click)="picker.open()" [formControlName]="control?.name" readonly [matDatepicker]="picker">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   
     <mat-icon 
