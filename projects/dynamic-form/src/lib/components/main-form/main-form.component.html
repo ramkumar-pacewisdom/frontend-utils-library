@@ -87,6 +87,7 @@
       <lib-chip-input
         [chipControl]="control"
         [formControlName]="control?.name"
+        [viewOnly]="viewOnly"
       ></lib-chip-input>
       <textarea
         matInput
@@ -146,6 +147,7 @@
         [checked]="control?.value"
         [required]="control?.validators?.required"
         color="primary"
+        (change)="togglefield($event)"
       >
       </mat-slide-toggle>
       <textarea
