@@ -1,5 +1,5 @@
 {
-  "name": "@elevate/dynamic-form",
+  "name": "dynamic-form-suma",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^17.3.4",
