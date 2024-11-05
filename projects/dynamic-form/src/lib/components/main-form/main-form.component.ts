@@ -258,4 +258,9 @@ constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: Ele
     }
   }
 
+  togglefield(event:any) {
+    if(this.viewOnly){
+      event.source.checked = !event.checked;
+    }
+  }
 }
