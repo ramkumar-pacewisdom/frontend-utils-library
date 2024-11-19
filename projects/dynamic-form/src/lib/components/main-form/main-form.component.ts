@@ -68,7 +68,8 @@ export class MainFormComponent implements OnInit {
   myForm: FormGroup = this.fb.group({});
   resources:any = [];
   @ViewChild('subform') subform: MainFormComponent | undefined
-  @Output() change = new EventEmitter<any>();
+  @Output() controlChange = new EventEmitter<any>(); // parent component can detect the particular form-control changed
+  @Output() formChange = new EventEmitter<any>();
   // ViewChildren to capture all tooltip instances
   @ViewChildren(MatTooltip) tooltips!: QueryList<MatTooltip>;
   public showSpinners = true;
@@ -217,7 +218,7 @@ constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: Ele
   }
 
 
-  handleFocusOut() {
+  handleFocusOut(event?:any) {
     if(this.subform?.myForm) {
       this.myForm.value.recommended_duration = this.subform?.myForm.value;
       // instead of recommended duration, in subfields meta, parent control name need to be added.
@@ -225,7 +226,8 @@ constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: Ele
     for (let key in this.myForm.value) {
       this.myForm.value[key]= this.myForm.value[key].value ? this.myForm.value[key].value : this.myForm.value[key]
     }
-    this.change.emit(this.myForm.value);
+    this.controlChange.emit(event.target.id)
+    this.formChange.emit(this.myForm.value);
   }
 
   showTooltip(index: number) {
@@ -244,7 +246,7 @@ constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: Ele
   hideTooltip(index: number) {
     const tooltipArray = this.tooltips.toArray();
     tooltipArray[index]?.hide();
-    tooltipArray[index].disabled = true; 
+    tooltipArray[index].disabled = true;
   }
 
   // Listen to document clicks to hide tooltips when clicking outside
@@ -253,7 +255,7 @@ constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: Ele
     if (!this.eRef.nativeElement.contains(event.target)) {
       this.tooltips.forEach(tooltip => {
         tooltip.hide();
-        tooltip.disabled = true; 
+        tooltip.disabled = true;
       });
     }
   }

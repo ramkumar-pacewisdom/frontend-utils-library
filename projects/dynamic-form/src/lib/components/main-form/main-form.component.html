@@ -15,6 +15,7 @@
         [value]="control?.value"
         [(ngModel)]="control.value"
         [readonly]="viewOnly"
+        [id]="control?.name"
       />
       <mat-icon
         matSuffix
@@ -63,6 +64,7 @@
         [value]="control?.value"
         [(ngModel)]="control.value"
         [readonly]="viewOnly"
+        [id]="control?.name"
       >
       </textarea>
     </mat-form-field>
@@ -87,13 +89,14 @@
       <lib-chip-input
         [chipControl]="control"
         [formControlName]="control?.name"
-        [viewOnly]="viewOnly"
+        [id]="control?.name"
       ></lib-chip-input>
       <textarea
         matInput
         [formControlName]="control?.name"
         hidden
         class="visibility-hidden"
+        [id]="control?.name"
         [required]="control?.validators?.required"
       ></textarea>
     </mat-form-field>
@@ -209,19 +212,19 @@
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-  
-    <mat-icon 
+
+    <mat-icon
       *ngIf="control?.infoMessage"
-      class="info-icon enable-with-pointer-events" 
+      class="info-icon enable-with-pointer-events"
       matTooltipClass="info-tooltip"
       matTooltipPosition="above"
       [matTooltip]="control?.infoMessage"
       [matTooltipDisabled]="true"
-      #tooltip="matTooltip" 
+      #tooltip="matTooltip"
       (click)="showTooltip(i)"
       (mouseleave)="hideTooltip(i)">info
     </mat-icon>
-  
+
   <mat-error class="error-container" *ngIf="control?.errorMessage">
     <div  *ngIf="
     myForm.get(control?.name)?.touched &&
