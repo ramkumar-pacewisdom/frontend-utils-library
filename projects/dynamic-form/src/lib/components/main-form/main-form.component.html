@@ -1,4 +1,4 @@
-<form [formGroup]="myForm" [class]="classFlex" (focusout)="handleFocusOut()" [ngClass]="{'disabled-with-pointer-events': viewOnly}">
+<form [formGroup]="myForm" [class]="classFlex" (focusout)="handleFocusOut($event)" [ngClass]="{'disabled-with-pointer-events': viewOnly}">
   <div *ngFor="let control of formJson; let i = index"  style="width: 100%; position: relative;">
     <mat-form-field appearance="outline"
       *ngIf="control?.type === 'text' || control?.type === 'password'"
