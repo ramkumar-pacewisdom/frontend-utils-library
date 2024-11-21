@@ -163,21 +163,34 @@
       ></textarea>
     </mat-form-field>
 
-    <div *ngIf="control?.type == 'subFields'" >
+    <!-- <div *ngIf="control?.type == 'subFields'" >
       <div>
         <dynamic-form [formJson]="control.subfields" [viewOnly]="viewOnly" classFlex="flex-class" #subform (change)="addFields(control?.name, $event)" ></dynamic-form>
       </div>
-    </div>
-
-    <!-- <mat-form-field appearance="outline" *ngIf="control?.type == 'subFields'" floatLabel="always" hidden>
-      <mat-label *ngIf="control.label">{{ control?.label }}</mat-label> -->
-      <!-- <div> -->
-        <!-- <dynamic-form [formJson]="control.subfields" classFlex="flex-class" #subform (change)="addFields(control?.name, $event)" ></dynamic-form> -->
-      <!-- </div> -->
-      <!-- <textarea
+    </div> -->
+    <div *ngIf="control?.type == 'subFields'" >
+      <div>
+        <dynamic-form [formJson]="control.subfields" [viewOnly]="viewOnly" classFlex="flex-class" #dynamicForm (change)="addFields(control?.name, $event)" ></dynamic-form>
+      </div>
+      <textarea
         matInput
         [formControlName]="control?.name"
         hidden
+        class="visibility-hidden"
+        style="visibility: hidden;"
+        [id]="control?.name"
+        [required]="control?.validators?.required || this.dynamicForm?.myForm?.invalid"
+      ></textarea>
+    </div>
+    <!-- <mat-form-field appearance="outline" *ngIf="control?.type == 'subFields'" floatLabel="always" hidden>
+      <div>
+        <dynamic-form [formJson]="control.subfields" classFlex="flex-class" #subform (change)="addFields(control?.name, $event)" ></dynamic-form>
+      </div>
+      <textarea
+        matInput
+        [formControlName]="control?.name"
+        hidden
+        class="visibility-hidden"
         style="visibility: hidden;"
         [required]="control?.validators?.required || this.subform?.myForm?.invalid"
       ></textarea>
@@ -216,12 +229,12 @@
 
     <mat-icon
       *ngIf="control?.infoMessage"
-      class="info-icon enable-with-pointer-events"
+      class="info-icon enable-with-pointer-events" 
       matTooltipClass="info-tooltip"
       matTooltipPosition="above"
       [matTooltip]="control?.infoMessage"
       [matTooltipDisabled]="true"
-      #tooltip="matTooltip"
+      #tooltip="matTooltip" 
       (click)="showTooltip(i)"
       (mouseleave)="hideTooltip(i)">info
     </mat-icon>

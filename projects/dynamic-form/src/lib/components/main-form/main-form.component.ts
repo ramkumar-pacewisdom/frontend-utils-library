@@ -68,6 +68,7 @@ export class MainFormComponent implements OnInit {
   myForm: FormGroup = this.fb.group({});
   resources:any = [];
   @ViewChild('subform') subform: MainFormComponent | undefined
+  @ViewChildren('dynamicForm') dynamicForms!: QueryList<MainFormComponent>;
   @Output() controlChange = new EventEmitter<any>(); // parent component can detect the particular form-control changed
   @Output() formChange = new EventEmitter<any>();
   // ViewChildren to capture all tooltip instances
@@ -204,8 +205,17 @@ constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: Ele
     });
   }
   addFields(controlName: any,value:any) {
+    
+   console.log(this.dynamicForms.toArray())
+  this.dynamicForms.toArray().find(
+    (form) => {  console.log(form.myForm.value) ; console.log()}
+  );
+  const selectedForm = this.dynamicForms.toArray().find(
+    (form) => form.myForm.get(controlName) // Match based on control name
+  );
+  console.log(selectedForm)
     this.myForm.patchValue({
-      [controlName]:this.subform?.myForm?.value
+      [controlName]:value
     });
   }
 
@@ -219,6 +229,7 @@ constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: Ele
 
 
   handleFocusOut(event?:any) {
+    console.log(this.dynamicForms.toArray())
     if(this.subform?.myForm) {
       this.myForm.value.recommended_duration = this.subform?.myForm.value;
       // instead of recommended duration, in subfields meta, parent control name need to be added.
