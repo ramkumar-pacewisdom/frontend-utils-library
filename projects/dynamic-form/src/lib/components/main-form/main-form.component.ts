@@ -226,7 +226,7 @@ constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: Ele
     for (let key in this.myForm.value) {
       this.myForm.value[key]= this.myForm.value[key].value ? this.myForm.value[key].value : this.myForm.value[key]
     }
-    this.controlChange.emit(event.target.id)
+    this.controlChange.emit( event ? event.target.id : '')
     this.formChange.emit(this.myForm.value);
   }
 
