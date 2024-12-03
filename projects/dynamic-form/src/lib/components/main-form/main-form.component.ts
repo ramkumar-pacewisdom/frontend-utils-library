@@ -71,6 +71,7 @@ export class MainFormComponent implements OnInit {
   @ViewChildren('dynamicForm') dynamicForms!: QueryList<MainFormComponent>;
   @Output() controlChange = new EventEmitter<any>(); // parent component can detect the particular form-control changed
   @Output() formChange = new EventEmitter<any>();
+  @Output() clickableButton = new EventEmitter<any>();
   // ViewChildren to capture all tooltip instances
   @ViewChildren(MatTooltip) tooltips!: QueryList<MatTooltip>;
   public showSpinners = true;
@@ -275,5 +276,9 @@ constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: Ele
     if(this.viewOnly){
       event.source.checked = !event.checked;
     }
+  }
+
+  navigateToParent(control:any){
+    this.clickableButton.emit(control);
   }
 }
