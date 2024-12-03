@@ -156,9 +156,6 @@ export const sampleData = [
             }
         ],
         "position": "floating",
-        "errorMessage": {
-            "required": "Enter project title"
-        },
         "validators": {
             "required": false
         }
@@ -356,5 +353,49 @@ export const sampleData = [
             "entityType": "licenses"
         },
         "multiple": false
-    }
+    },
+    {
+        "name": "dates",
+        "label": "Date",
+        "value": "",
+        "class": "",
+        "type": "subFields",
+        "placeHolder": "",
+        "subfields": [
+            {
+                "name": "startDate",
+                "label": "Start date",
+                "value": "",
+                "class": "",
+                "type": "date",
+                "placeHolder": "enter start date",
+                "position": "floating",
+                "errorMessage": {
+                    "required": "Enter start date "
+                },
+                "validators": {
+                    "required": true
+                }
+            },
+            {
+                "name": "endDate",
+                "label": "End date",
+                "value": "",
+                "class": "",
+                "type": "date",
+                "placeHolder": "enter end date",
+                "position": "floating",
+                "errorMessage": {
+                    "required": "Enter end date "
+                },
+                "validators": {
+                    "required": true
+                }
+            },
+        ],
+        "position": "floating",
+        "validators": {
+            "required": false
+        }
+    },
 ]

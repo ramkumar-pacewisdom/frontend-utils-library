@@ -1,5 +1,6 @@
 <form [formGroup]="myForm" [class]="classFlex" (focusout)="handleFocusOut($event)" [ngClass]="{'disabled-with-pointer-events': viewOnly}">
-  <div *ngFor="let control of formJson; let i = index"  style="width: 100%; position: relative;">
+  <ng-container *ngFor="let control of formJson; let i = index" >
+    <div [class]="control.cssStyle" style="position: relative;">
     <mat-form-field appearance="outline"
       *ngIf="control?.type === 'text' || control?.type === 'password'"
       floatLabel="always"
@@ -214,6 +215,15 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
+    <mat-form-field *ngIf="control?.type == 'triggerParent'" floatLabel="always" class="no-bottom-line">
+      <mat-label *ngIf="control.label">{{ control?.label }}</mat-label>
+      <div class="resource-button cursor-pointer" (click)="navigateToParent(control)">
+        <mat-icon>{{control.icon}}</mat-icon>&nbsp;
+        <p>{{control?.textForLink}}</p>
+      </div>
+      <input matInput [formControlName]="control?.name" hidden class="visibility-hidden"  [required]="control?.validators?.required"/>
+    </mat-form-field>
+
     <mat-icon
       *ngIf="control?.infoMessage"
       class="info-icon enable-with-pointer-events"
@@ -255,4 +265,5 @@
     </div>
 </mat-error>
 </div>
+</ng-container>
 </form>
