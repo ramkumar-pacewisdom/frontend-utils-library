@@ -270,4 +270,22 @@ constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: Ele
   navigateToParent(control:any){
     this.clickableButton.emit(control);
   }
+
+  OnViewTriggerParent(i:any, item:any){
+    let control = {
+      name: 'VIEW',
+      item: item,
+      index: i,
+    };
+    this.clickableButton.emit(control);
+  }
+
+  onDeleteTriggerParent(i:any, item:any){
+    let control = {
+      name: 'DELETE',
+      item: item,
+      index: i,
+    };
+    this.clickableButton.emit(control);
+  }
 }
