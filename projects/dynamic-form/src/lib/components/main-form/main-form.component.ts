@@ -70,7 +70,8 @@ export class MainFormComponent implements OnInit {
   @ViewChild('subform') subform: MainFormComponent | undefined
   @Output() controlChange = new EventEmitter<any>(); // parent component can detect the particular form-control changed
   @Output() formChange = new EventEmitter<any>();
-  @Output() clickableButton = new EventEmitter<any>();
+  @Output() onClickTriggerParent = new EventEmitter<any>();
+  @Output() onActionTriggerParent = new EventEmitter<any>();
   // ViewChildren to capture all tooltip instances
   @ViewChildren(MatTooltip) tooltips!: QueryList<MatTooltip>;
   public showSpinners = true;
@@ -268,24 +269,17 @@ constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: Ele
   }
 
   navigateToParent(control:any){
-    this.clickableButton.emit(control);
+    console.log(control)
+    this.onClickTriggerParent.emit(control);
   }
 
-  OnViewTriggerParent(i:any, item:any){
+  OnActionTriggerParent(action:any,i:any, item:any){
+    console.log(action)
     let control = {
-      name: 'VIEW',
+      action: action,
       item: item,
       index: i,
     };
-    this.clickableButton.emit(control);
-  }
-
-  onDeleteTriggerParent(i:any, item:any){
-    let control = {
-      name: 'DELETE',
-      item: item,
-      index: i,
-    };
-    this.clickableButton.emit(control);
+    this.onActionTriggerParent.emit(control);
   }
 }
