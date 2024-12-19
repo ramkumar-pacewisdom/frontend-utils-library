@@ -210,7 +210,7 @@
 
     <mat-form-field class="example-full-width"  appearance="outline" floatLabel="always"  *ngIf="control?.type == 'date'">
       <mat-label *ngIf="control.label">{{ control?.label }}</mat-label>
-      <input matInput [placeholder]="control?.placeHolder" (click)="picker.open()" [formControlName]="control?.name" readonly [matDatepicker]="picker">
+      <input matInput [placeholder]="control?.placeHolder" (click)="picker.open()" [formControlName]="control?.name" readonly [matDatepicker]="picker" [min]="checkminDate(control)" [max]="checkmaxDate(control)">
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>

@@ -269,12 +269,10 @@ constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: Ele
   }
 
   navigateToParent(control:any){
-    console.log(control)
     this.onClickTriggerParent.emit(control);
   }
 
   OnActionTriggerParent(action:any,i:any, item:any){
-    console.log(action)
     let control = {
       action: action,
       item: item,
@@ -282,4 +280,21 @@ constructor(private fb: FormBuilder,public dialog: MatDialog,  private eRef: Ele
     };
     this.onActionTriggerParent.emit(control);
   }
+
+  checkminDate(control: any) {
+    if (control.minDependentChild) {
+      const dependentControl = this.myForm.get(control.minDependentChild);
+      return dependentControl ? dependentControl.value : null;
+    }
+    return null;
+  }
+  
+  checkmaxDate(control: any) {
+    if (control.maxDependentChild) {
+      const dependentControl = this.myForm.get(control.maxDependentChild);
+      return dependentControl ? dependentControl.value : null;
+    }
+    return null;
+  }
+  
 }
